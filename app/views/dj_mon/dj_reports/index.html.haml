@@ -15,10 +15,10 @@
     = link_to "Active", "#active", "data-toggle" => "tab"
 
 .tab-content
-  .tab-pane#all.active{ 'data-url'   => all_dj_reports_url }
-  .tab-pane#failed{ 'data-url'=> failed_dj_reports_url }
-  .tab-pane#active{ 'data-url'=> active_dj_reports_url }
-  .tab-pane#queued{ 'data-url'=> queued_dj_reports_url }
+  .tab-pane#all.active{ 'data-url'   => all_dj_reports_path }
+  .tab-pane#failed{ 'data-url'=> failed_dj_reports_path }
+  .tab-pane#active{ 'data-url'=> active_dj_reports_path }
+  .tab-pane#queued{ 'data-url'=> queued_dj_reports_path }
 
 %script#dj_reports_template{ :type=> "text/x-handlebars-template" }
   %table.table.table-striped#jobs-table
@@ -62,11 +62,11 @@
         %td.date
           {{#failed}}
           {{failed_at}}
-          
-          = form_tag CGI.unescape(retry_dj_report_url(:id => "{{id}}")), :method => :post, :class => 'form-inline' do
+
+          = form_tag CGI.unescape(retry_dj_report_path(:id => "{{id}}")), :method => :post, :class => 'form-inline' do
             = submit_tag 'Retry', :class => 'btn btn-info btn-mini'
 
-          = form_tag CGI.unescape(dj_report_url(:id => "{{id}}")), :method => :delete, :class => 'form-inline' do
+          = form_tag CGI.unescape(dj_report_path(:id => "{{id}}")), :method => :delete, :class => 'form-inline' do
             = submit_tag 'Delete', :class => 'btn btn-danger btn-mini'
 
           {{/failed}}
