@@ -6,7 +6,7 @@ module DjMon
           def method_missing(method, *args, &block)
             scope = ::DjMon::Backend::ActiveRecord.send(method, *args, &block)
             limit = Rails.configuration.dj_mon.results_limit
-            limit.present? ? scope.order('id DESC').limit(limit) : scope.order('id DESC')
+            limit.present? ? scope.order('priority ASC, run_at ASC, id DESC').limit(limit) : scope.order('priority ASC, run_at ASC, id DESC')
           end
 
           def respond_to?(method)
@@ -21,7 +21,7 @@ module DjMon
         end
 
         def all
-          Delayed::Job.all
+          Delayed::Job.scoped
         end
 
         def failed
