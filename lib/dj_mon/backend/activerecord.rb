@@ -21,7 +21,11 @@ module DjMon
         end
 
         def all
-          Delayed::Job.scoped
+          if Rails::VERSION::MAJOR >= 4
+            Delayed::Job.all
+          else
+            Delayed::Job.scoped
+          end
         end
 
         def failed
