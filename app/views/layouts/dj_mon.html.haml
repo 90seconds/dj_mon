@@ -32,6 +32,12 @@
 
     %script#dj_counts_template{ :type=> "text/x-handlebars-template" }
       %span.badge.badge-warning
+        {{overdue}} overdue
+      %span.badge.badge-info
+        {{future}} future
+      %span.badge
+        &mdash;
+      %span.badge.badge-warning
         {{failed}} failed
       %span.badge.badge-info
         {{queued}} queued
@@ -92,4 +98,3 @@
 
         .modal-footer
           = link_to "Close", '#', :class => 'btn btn-primary', 'data-dismiss'=> 'modal'
-

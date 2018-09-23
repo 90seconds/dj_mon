@@ -6,6 +6,8 @@ DjMon::Engine.routes.draw do
       get :failed
       get :active
       get :queued
+      get :future
+      get :overdue
       get :dj_counts
       get :settings
     end

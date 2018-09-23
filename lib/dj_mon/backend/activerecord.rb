@@ -40,6 +40,14 @@ module DjMon
           Delayed::Job.where('failed_at IS NULL AND locked_by IS NULL')
         end
 
+        def future
+          Delayed::Job.where('run_at > ?', Time.zone.now)
+        end
+
+        def overdue
+          Delayed::Job.where('run_at <= ?', Time.zone.now)
+        end
+
         def destroy id
           dj = Delayed::Job.find(id)
           dj.destroy if dj

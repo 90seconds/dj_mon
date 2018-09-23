@@ -37,7 +37,6 @@ code.block {
 #dj-counts-view {
   position: relative;
   top: 12px;
-  width: 400px;
 }
 
 #dj-counts-view .badge {
@@ -47,4 +46,8 @@ code.block {
 
 form.form-inline {
   display: inline;
+}
+
+.nav-tabs > li.spacer {
+  padding: 0 20px;
 }

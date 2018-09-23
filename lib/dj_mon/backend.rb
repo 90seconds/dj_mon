@@ -1,6 +1,6 @@
 module DjMon
   module Backend
-    BACKEND_METHODS = [:all, :failed, :active, :queued, :destroy, :retry, :limited]
+    BACKEND_METHODS = [:all, :failed, :active, :queued, :future, :overdue, :destroy, :retry, :limited]
 
     class << self
       def used_backend
