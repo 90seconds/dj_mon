@@ -6,7 +6,8 @@ module DjMon
           def method_missing(method, *args, &block)
             scope = ::DjMon::Backend::ActiveRecord.send(method, *args, &block)
             limit = Rails.configuration.dj_mon.results_limit
-            limit.present? ? scope.order('priority ASC, run_at ASC, id DESC').limit(limit) : scope.order('priority ASC, run_at ASC, id DESC')
+            ordered = scope.order('run_at ASC, created_at ASC, id DESC')
+            limit.present? ? ordered.limit(limit) : ordered
           end
 
           def respond_to?(method)
