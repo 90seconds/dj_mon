@@ -41,8 +41,12 @@ module DjMon
           Delayed::Job.where('failed_at IS NULL AND locked_by IS NULL')
         end
 
+        def upcoming
+          Delayed::Job.where('run_at BETWEEN ? AND ?', 1.second.from_now, 1.minute.from_now)
+        end
+
         def future
-          Delayed::Job.where('run_at > ?', Time.zone.now)
+          Delayed::Job.where('run_at > ?', 1.minute.from_now)
         end
 
         def overdue

@@ -7,16 +7,14 @@
 %ul.nav.nav-tabs
   %li.active
     = link_to "All", "#all", "data-toggle" => "tab"
-  %li.spacer
-    &nbsp;
   %li
-    = link_to "Active", "#active", "data-toggle" => "tab"
-  %li
-    = link_to "Queued", "#queued", "data-toggle" => "tab"
+    = link_to "Running", "#active", "data-toggle" => "tab"
   %li
     = link_to "Failed", "#failed", "data-toggle" => "tab"
   %li.spacer
     &nbsp;
+  %li
+    = link_to "Upcoming", "#upcoming", "data-toggle" => "tab"
   %li
     = link_to "Future", "#future", "data-toggle" => "tab"
   %li
@@ -26,7 +24,7 @@
   .tab-pane#all.active{ 'data-url'   => all_dj_reports_path }
   .tab-pane#failed{ 'data-url'=> failed_dj_reports_path }
   .tab-pane#active{ 'data-url'=> active_dj_reports_path }
-  .tab-pane#queued{ 'data-url'=> queued_dj_reports_path }
+  .tab-pane#upcoming{ 'data-url'=> upcoming_dj_reports_path }
   .tab-pane#future{ 'data-url'=> future_dj_reports_path }
   .tab-pane#overdue{ 'data-url'=> overdue_dj_reports_path }
 

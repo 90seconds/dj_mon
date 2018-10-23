@@ -25,6 +25,10 @@ module DjMon
       respond_with DjReport.queued_reports
     end
 
+    def upcoming
+      respond_with DjReport.upcoming_reports
+    end
+
     def future
       respond_with DjReport.future_reports
     end

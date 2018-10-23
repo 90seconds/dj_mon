@@ -49,6 +49,10 @@ module DjMon
         reports_for DjMon::Backend.limited.queued
       end
 
+      def upcoming_reports
+        reports_for DjMon::Backend.limited.upcoming
+      end
+
       def future_reports
         reports_for DjMon::Backend.limited.future
       end
@@ -63,6 +67,7 @@ module DjMon
           :failed => DjMon::Backend.failed.size,
           :active => DjMon::Backend.active.size,
           :queued => DjMon::Backend.queued.size,
+          :upcoming => DjMon::Backend.upcoming.size,
           :future => DjMon::Backend.future.size,
           :overdue => DjMon::Backend.overdue.size,
         }
