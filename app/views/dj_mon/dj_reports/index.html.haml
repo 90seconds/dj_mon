@@ -37,6 +37,8 @@
         %th
           ID
         %th
+          Payload Class
+        %th
           Priority
         %th
           Attempts
@@ -48,6 +50,8 @@
           Created at
         %th.date
           Failed at
+        %th
+          Actions
 
     %tbody
       {{#.}}
@@ -57,6 +61,8 @@
             {{queue}}
         %td
           <a href="#" data-content="<code class='block'>{{payload}}</code>" rel='popover' title='Payload'> {{id}} </a>
+        %td
+          {{payload_class}}
         %td
           {{priority}}
         %td
@@ -70,7 +76,7 @@
         %td.date
           {{#failed}}
           {{failed_at}}
-
+        %td
           = form_tag CGI.unescape(retry_dj_report_path(:id => "{{id}}")), :method => :post, :class => 'form-inline' do
             = submit_tag 'Retry', :class => 'btn btn-info btn-mini'
 
